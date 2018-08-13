@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejercicio-1EntityFramework", "Ejercicio-1EntityFramework\Ejercicio-1EntityFramework.csproj", "{D2FF05D0-2542-463D-BF6C-F1D23A88D74A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2FF05D0-2542-463D-BF6C-F1D23A88D74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FF05D0-2542-463D-BF6C-F1D23A88D74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FF05D0-2542-463D-BF6C-F1D23A88D74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FF05D0-2542-463D-BF6C-F1D23A88D74A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC311A97-C774-4B37-8AAA-2E650046F76F}
+	EndGlobalSection
+EndGlobal
