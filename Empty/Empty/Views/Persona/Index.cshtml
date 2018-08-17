@@ -1,0 +1,47 @@
+﻿@model WebPersonasMascotas.ViewModels.PersonaViewModel.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 class="title"> Menu de Personas</h1>
+    <a class="btn btn-danger btn-md del" asp-action="Create" asp-controller="Persona"> <i class="FontAwesome fas fa-trash-alt">CREAR UNA PERSONA</i></a>
+    <table class="dataTable table table-striped table-bordered display table-hover" cellspacing="0" id="myTable">
+        <thead>
+            <tr>
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Fecha de nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Persona in Model.Personas)
+            {
+                <tr>
+                    <td>
+                        @Persona.Cedula
+                    </td>
+                    <td>
+                        @Persona.Nombre
+                    </td>
+                    <td>
+                        @Persona.FechaNacimiento
+                    </td>
+                    <td>
+                        <a class="btn btn-warning btn-md" asp-action="Editar" asp-controller="Persona" asp-route-id="@Persona.Cedula"> <i class="FontAwesome fas fa-edit">Editar</i></a>
+                        <a class="btn btn-danger btn-md del" asp-action="Eliminar" asp-controller="Persona" asp-route-id="@Persona.Cedula"> <i class="FontAwesome fas fa-trash-alt">Elimar</i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
