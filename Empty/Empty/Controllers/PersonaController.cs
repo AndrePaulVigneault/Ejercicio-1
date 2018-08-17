@@ -10,7 +10,12 @@ namespace WebPersonasMascotas.Controllers
 {
     public class PersonaController : Controller
     {
-        IPersonaRepository ContextPersona = new MockPersona();
+        private readonly IPersonaRepository ContextPersona;
+
+        public PersonaController(IPersonaRepository _ContextPersona)
+        {
+            ContextPersona = _ContextPersona;
+        }
 
         public IActionResult Index()
         {
