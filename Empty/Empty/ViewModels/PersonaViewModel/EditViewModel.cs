@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebPersonasMascotas.ViewModels.PersonaViewModel
 {
-    public class CreateViewModel
+    public class EditViewModel
     {
         [Required(ErrorMessage = "La cedula de la persona es requerida")]
         [Display(Name = "Cedula")]
@@ -17,7 +17,6 @@ namespace WebPersonasMascotas.ViewModels.PersonaViewModel
 
         [Required(ErrorMessage = "La Fecha de nacimiento de la persona es requerida")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{MM/dd/yyyy}")]
         [Display(Name = "FechaNacimiento")]
         public DateTime FechaNacimiento { get; set; }
     }

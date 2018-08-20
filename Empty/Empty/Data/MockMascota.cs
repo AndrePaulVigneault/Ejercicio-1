@@ -9,13 +9,22 @@ namespace Ejercicio_1EntityFramework.Data
     class MockMascota : IMascotaRepository
     {
         List<Mascota> Mascotas = new List<Mascota>();
+        public MockMascota()
+        {
+            Mascotas.Add(new Mascota { Id = 1, Nombre = "Firulai", Raza = "dalmata", EstadoAdopcion = false });
+            Mascotas.Add(new Mascota { Id = 2, Nombre = "Maya", Raza = "rottweiler", EstadoAdopcion = false });
+            Mascotas.Add(new Mascota { Id = 3, Nombre = "Tequila", Raza = "rottweiler", EstadoAdopcion = false });
+            Mascotas.Add(new Mascota { Id = 4, Nombre = "Scot", Raza = "Golden", EstadoAdopcion = false });
+            Mascotas.Add(new Mascota { Id = 5, Nombre = "Chino", Raza = "Mierdero", EstadoAdopcion = false });
+            Mascotas.Add(new Mascota { Id = 6, Nombre = "kip", Raza = "Labrador", EstadoAdopcion = false });
+        }
 
         public bool Add(Mascota mascota)
         {
             var MascotaAgregar = Mascotas.FirstOrDefault(r => r.Id == mascota.Id);
             if (MascotaAgregar == null)
             {
-                var last = Mascotas.LastOrDefault(r => r.Id == mascota.Id);
+                var last = Mascotas.LastOrDefault();
                 if (last == null)
                 {
                     mascota.Id = 1;
@@ -66,7 +75,6 @@ namespace Ejercicio_1EntityFramework.Data
 
         public void Save()
         {
-            throw new NotImplementedException();
         }
     }
 }

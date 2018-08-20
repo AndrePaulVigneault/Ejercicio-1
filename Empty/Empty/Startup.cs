@@ -18,6 +18,7 @@ namespace Empty
         {
             services.AddMvc();
             services.AddSingleton<IPersonaRepository, MockPersona>();
+            services.AddSingleton<IMascotaRepository, MockMascota>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

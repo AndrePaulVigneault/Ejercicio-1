@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ejercicio_1EntityFramework.Data
 {
-    interface IMascotaRepository:IGenericRepository<Mascota>
+    public interface IMascotaRepository:IGenericRepository<Mascota>
     {
     }
 }

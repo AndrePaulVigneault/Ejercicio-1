@@ -1,0 +1,35 @@
+﻿@model WebPersonasMascotas.ViewModels.CreateViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <h2 class="title">Crear Mascota</h2>
+    <form asp-action="Create" asp-controller="Mascota" method="post">
+        <div>
+            <label asp-for="Nombre"></label>
+            <div>
+                <input asp-for="Nombre" class="lbl-block spaces" required />
+                <span asp-validation-for="Nombre"></span>
+            </div>
+        </div>
+        <div>
+            <label asp-for="Raza"></label>
+            <div>
+                <input asp-for="Raza" required />
+                <span asp-validation-for="Raza"></span>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Crear" class="btn btn-primary btn-md btn-submit" />
+        </div>
+    </form>
+</body>
+</html>

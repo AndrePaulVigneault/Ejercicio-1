@@ -51,5 +51,30 @@ namespace WebPersonasMascotas.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            var Persona = ContextPersona.Find(id);
+            return View(new EditViewModel()
+            {
+                Cedula = Persona.Cedula, FechaNacimiento = Persona.FechaNacimiento, Nombre = Persona.Nombre
+            });
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(EditViewModel model)
+        {
+
+            var persona = ContextPersona.Find(model.Cedula);
+            if (persona != null)
+            {
+                persona.FechaNacimiento = model.FechaNacimiento;
+                persona.Nombre = model.Nombre;
+                ContextPersona.Edit(persona);
+                ContextPersona.Save();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

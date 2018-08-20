@@ -12,13 +12,18 @@
 </head>
 <body>
     <h1 class="title"> Menu de Personas</h1>
+    <br />
+    <br />
     <a class="btn btn-danger btn-md del" asp-action="Create" asp-controller="Persona"> <i class="FontAwesome fas fa-trash-alt">CREAR UNA PERSONA</i></a>
+    <br />
+    <br />
     <table class="dataTable table table-striped table-bordered display table-hover" cellspacing="0" id="myTable">
         <thead>
             <tr>
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Fecha de nacimiento</th>
+                <th>Botones</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +40,7 @@
                         @Persona.FechaNacimiento
                     </td>
                     <td>
-                        <a class="btn btn-warning btn-md" asp-action="Editar" asp-controller="Persona" asp-route-id="@Persona.Cedula"> <i class="FontAwesome fas fa-edit">Editar</i></a>
+                        <a class="btn btn-warning btn-md" asp-action="Edit" asp-controller="Persona" asp-route-id="@Persona.Cedula"> <i class="FontAwesome fas fa-edit">Editar</i></a>
                         <a class="btn btn-danger btn-md del" asp-action="Eliminar" asp-controller="Persona" asp-route-id="@Persona.Cedula"> <i class="FontAwesome fas fa-trash-alt">Elimar</i></a>
                     </td>
                 </tr>

@@ -1,0 +1,57 @@
+﻿@model WebPersonasMascotas.ViewModels.MascotaViewModel.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 class="title"> Menu de Mascotas</h1>
+    <br />
+    <br />
+    <a class="btn btn-danger btn-md del" asp-action="Create" asp-controller="Mascota"> <i class="FontAwesome fas fa-trash-alt">CREAR UNA MASCOTA</i></a>
+    <br />
+    <br />
+
+    <table class="dataTable table table-striped table-bordered display table-hover" cellspacing="0" id="myTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Estado de Adopcion</th>
+                <th>Botones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Mascota in Model.Mascotas)
+            {
+                <tr>
+                    <td>
+                        @Mascota.Id
+                    </td>
+                    <td>
+                        @Mascota.Nombre
+                    </td>
+                    <td>
+                        @Mascota.Raza
+                    </td>
+                    <td>
+                        @Mascota.EstadoAdopcion
+                    </td>
+                    <td>
+                        <a class="btn btn-warning btn-md" asp-action="Edit" asp-controller="Mascota" asp-route-id="@Mascota.Id"> <i class="FontAwesome fas fa-edit">Editar</i></a>
+                        <a class="btn btn-danger btn-md del" asp-action="Eliminar" asp-controller="Mascota" asp-route-id="@Mascota.Id"> <i class="FontAwesome fas fa-trash-alt">Elimar</i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

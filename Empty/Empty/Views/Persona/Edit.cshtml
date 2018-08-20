@@ -1,0 +1,43 @@
+﻿@model WebPersonasMascotas.ViewModels.PersonaViewModel.EditViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2 class="title">Editar Persona</h2>
+    <form asp-action="Edit" asp-controller="Persona" method="post">
+        <div>
+            <label asp-for="Cedula" hidden></label>
+            <div>
+                <input asp-for="Cedula" value="@Model.Cedula" class="lbl-block spaces" hidden/>
+                <span asp-validation-for="Cedula"></span>
+            </div>
+        </div>
+        <div>
+            <label asp-for="Nombre"></label>
+            <div>
+                <input asp-for="Nombre" value="@Model.Nombre" class="lbl-block spaces" required />
+                <span asp-validation-for="Nombre"></span>
+            </div>
+        </div>
+        <div>
+            <label asp-for="FechaNacimiento"></label>
+            <div>
+                <input asp-for="FechaNacimiento" id="myDate"  required />
+                <span asp-validation-for="FechaNacimiento"></span>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Editar" class="btn btn-primary btn-md btn-submit" />
+        </div>
+    </form>
+</body>
+
+</html>
