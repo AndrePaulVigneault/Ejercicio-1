@@ -1,0 +1,53 @@
+﻿@model WebPersonasMascotas.ViewModels.RelacionViewModel.CreateViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <h2 class="title">Crear Relacion</h2>
+    <form asp-action="Create" asp-controller="Relacion" method="post">
+        <div class="form-group">
+            <label asp-for="IdPersona"> Personas</label>
+            <div>
+                <select asp-for="IdPersona" class="form-control">
+                    @foreach (var per in Model.Personas)
+                    {
+
+                        <option value="@per.Cedula">@per.Nombre</option>
+                    }
+
+                </select>
+                <span asp-validation-for="IdPersona"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IdMascota"> Mascotas</label>
+            <div>
+                <select asp-for="IdMascota" class="form-control">
+                    @foreach (var Mascota in Model.Mascotas)
+                    {
+
+                        <option value="@Mascota.Id">@Mascota.Nombre</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Ligar" class="btn btn-primary btn-md btn-submit" />
+        </div>
+    </form>
+
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessageFor(model => model.IdMascota)
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿@model WebPersonasMascotas.ViewModels.RelacionViewModel.EditViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Edit</title>
+</head>
+<body>
+    <h2 class="title">Editar Relacion</h2>
+    <form asp-action="Edit" asp-controller="Relacion" method="post">
+
+        <div>
+            <label asp-for="id" ></label>
+            <div>
+                <input asp-for="id" value="@Model.id" class="lbl-block spaces"  />
+                <span asp-validation-for="id"></span>
+            </div>
+        </div>
+        
+        <div>
+            <input type="submit" value="Ligar" class="btn btn-primary btn-md btn-submit" />
+        </div>
+    </form>
+
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary(true)
+        @Html.ValidationMessageFor(model => model.IdMascota)
+    </div>
+</body>
+</html>

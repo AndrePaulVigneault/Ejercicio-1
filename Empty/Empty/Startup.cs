@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using WebPersonasMascotas.Data;
 
 namespace Empty
 {
@@ -19,6 +20,7 @@ namespace Empty
             services.AddMvc();
             services.AddSingleton<IPersonaRepository, MockPersona>();
             services.AddSingleton<IMascotaRepository, MockMascota>();
+            services.AddSingleton<IPersona_MascotaRepository, MockPersona_Mascota>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,60 @@
+﻿@model WebPersonasMascotas.ViewModels.Relacion.IndexViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 class="title"> Menu de Relaciones</h1>
+    <br />
+    <br />
+    <a class="btn btn-danger btn-md del" asp-action="Create" asp-controller="Relacion"> <i class="FontAwesome fas fa-trash-alt">CREAR UNA RELACION </i></a>
+    <br />
+    <br />
+    <table class="dataTable table table-striped table-bordered display table-hover" cellspacing="0" id="myTable">
+        <thead>
+            <tr>
+                <th>Id Relacion</th>
+                <th>Cedula Persona</th>
+                <th>Nombre Persona</th>
+                <th>Id Mascota</th>
+                <th>Nombre Mascota</th>
+                <th>Botones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Relacion in Model.Relaciones)
+            {
+            <tr>
+                <td>
+                    @Relacion.Id
+                </td>
+                <td>
+                    @Relacion.Persona.Cedula
+                </td>
+                <td>
+                    @Relacion.Persona.Nombre
+                </td>
+                <td>
+                    @Relacion.Mascota.Id
+                </td>
+                <td>
+                    @Relacion.Mascota.Nombre
+                </td>
+                <td>
+                    <a class="btn btn-warning btn-md" asp-action="Edit" asp-controller="Relacion" asp-route-id="@Relacion.Id"> <i class="FontAwesome fas fa-edit">Editar</i></a>
+                    <a class="btn btn-danger btn-md del" asp-action="Eliminar" asp-controller="Relacion" asp-route-id="@Relacion.Id"> <i class="FontAwesome fas fa-trash-alt">Elimar</i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
