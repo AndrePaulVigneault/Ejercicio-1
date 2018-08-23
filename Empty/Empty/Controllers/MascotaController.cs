@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DbContextLibrary;
 using Ejercicio_1EntityFramework.Data;
 using Microsoft.AspNetCore.Mvc;
 using WebPersonasMascotas.ViewModels;
@@ -32,7 +33,7 @@ namespace WebPersonasMascotas.Controllers
         public IActionResult Create(CreateViewModel createViewModel)
         {
 
-            if (ContextMascota.Add(new Ejercicio_1EntityFramework.Mascota()
+            if (ContextMascota.Add(new Mascota()
             {
                 EstadoAdopcion = false,
                 Nombre = createViewModel.Nombre,

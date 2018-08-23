@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Ejercicio_1EntityFramework
+namespace DbContextLibrary
 {
     public class Persona_Mascota
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Persona Persona { get; set; }
         public Mascota Mascota { get; set; }
-
+        public Persona Persona { get; set; }
     }
 }

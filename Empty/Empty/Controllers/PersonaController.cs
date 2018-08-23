@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DbContextLibrary;
 using Ejercicio_1EntityFramework.Data;
 using Microsoft.AspNetCore.Mvc;
 using WebPersonasMascotas.ViewModels.PersonaViewModel;
@@ -31,7 +32,8 @@ namespace WebPersonasMascotas.Controllers
         public IActionResult Create(CreateViewModel createViewModel)
         {
 
-            if(ContextPersona.Add(new Ejercicio_1EntityFramework.Persona() { Cedula = createViewModel.Cedula,
+
+            if(ContextPersona.Add(new Persona() { Cedula = createViewModel.Cedula,
                                                                              Nombre = createViewModel.Nombre,
                                                                              FechaNacimiento = createViewModel.FechaNacimiento   }))
             {

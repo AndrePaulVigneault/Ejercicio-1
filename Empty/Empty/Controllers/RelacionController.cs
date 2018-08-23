@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DbContextLibrary;
 using Ejercicio_1EntityFramework;
 using Ejercicio_1EntityFramework.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -118,6 +119,17 @@ namespace WebPersonasMascotas.Controllers
             ModelState.AddModelError("IdMascota", "La Relacion Ya Existe");
             return View(model);
 
+        }
+
+        public IActionResult Eliminar(int id)
+        {
+            var Relacion = ContextRelacion.Find(id);
+            if (Relacion != null)
+            {
+                ContextRelacion.Delete(id);
+                ContextRelacion.Save();
+            }
+            return RedirectToAction("Index");
         }
 
     }
