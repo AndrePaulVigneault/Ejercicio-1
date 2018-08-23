@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ejercicio_1EntityFramework;
 using Ejercicio_1EntityFramework.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebPersonasMascotas.Data;
 using WebPersonasMascotas.ViewModels.Relacion;
 using WebPersonasMascotas.ViewModels.RelacionViewModel;
@@ -71,15 +72,20 @@ namespace WebPersonasMascotas.Controllers
         public IActionResult Edit(int id)
         {
             var Persona_Mascota = ContextRelacion.Find(id);
-            return View(new EditViewModel()
+
+            EditViewModel EDITvm = new EditViewModel()
             {
-                id = id,
-                Personas = ContextPersona.GetAll().ToList(),
-                Mascotas = ContextMascota.GetAll().ToList(),
+                Id = id,
                 IdMascota = Persona_Mascota.Mascota.Id.ToString(),
                 IdPersona = Persona_Mascota.Persona.Cedula.ToString()
 
-            });
+            };
+
+            IList<Persona> Personas = ContextPersona.GetAll().ToList();
+            IList<Mascota> Mascotas = ContextMascota.GetAll().ToList();
+            EDITvm.Personas = Personas;
+            EDITvm.Mascotas = Mascotas;
+            return View(EDITvm);
         }
 
         [HttpPost]
@@ -90,9 +96,11 @@ namespace WebPersonasMascotas.Controllers
             Persona Per = ContextPersona.Find(IdPersona);
             Mascota masc = ContextMascota.Find(IdMascota);
 
-            var relacion = ContextRelacion.Find(model.id);
-            if (relacion != null)
+
+            if (ContextRelacion.Find(model.Id) != null)
             {
+                var relacion = new Persona_Mascota();
+                relacion.Id = model.Id;
                 relacion.Mascota = ContextMascota.Find(IdMascota);
                 relacion.Persona = ContextPersona.Find(IdPersona);
                 if (ContextRelacion.Edit(relacion))
@@ -105,9 +113,9 @@ namespace WebPersonasMascotas.Controllers
 
             IList<Persona> Personas = ContextPersona.GetAll().ToList();
             IList<Mascota> Mascotas = ContextMascota.GetAll().ToList();
-            ModelState.AddModelError("IdMascota", "La Relacion Ya Existe");
             model.Personas = Personas;
             model.Mascotas = Mascotas;
+            ModelState.AddModelError("IdMascota", "La Relacion Ya Existe");
             return View(model);
 
         }

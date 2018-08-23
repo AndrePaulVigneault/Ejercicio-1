@@ -10,14 +10,14 @@ namespace WebPersonasMascotas.ViewModels.RelacionViewModel
 {
     public class EditViewModel
     {
-        [Required(ErrorMessage = "Id requerido")]
-        public int id;
+        [Required(ErrorMessage = "Id  es requerido")]
+        [Display(Name = "Id")]
+        public int Id { get; set; }
         [Display(Name = "Escoja La Persona que quiere ligar")]
         public string IdPersona;
         [Display(Name = "Escoja La Mascota que quiere ligar")]
         public string IdMascota;
 
-        public SelectList selctPersona { get; set; }
         public IEnumerable<Persona> Personas { get; set; }
         public IEnumerable<Mascota> Mascotas { get; set; }
     }

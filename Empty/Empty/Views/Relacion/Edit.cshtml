@@ -7,28 +7,71 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
 </head>
 <body>
     <h2 class="title">Editar Relacion</h2>
     <form asp-action="Edit" asp-controller="Relacion" method="post">
-
         <div>
-            <label asp-for="id" ></label>
+            <label asp-for="Id" hidden></label>
             <div>
-                <input asp-for="id" value="@Model.id" class="lbl-block spaces"  />
-                <span asp-validation-for="id"></span>
+                <input asp-for="Id" value="@Model.Id" class="lbl-block spaces" hidden />
+                <span asp-validation-for="Id"></span>
             </div>
         </div>
-        
-        <div>
-            <input type="submit" value="Ligar" class="btn btn-primary btn-md btn-submit" />
+
+        <div class="form-group">
+            <label asp-for="IdPersona"> Personas</label>
+            <div>
+                <select asp-for="IdPersona" class="form-control">
+                    @foreach (var per in Model.Personas)
+                    {
+                        if (Model.IdPersona != per.Cedula.ToString())
+                        {
+                            <option value="@per.Cedula">@per.Nombre</option>
+                        }
+                        else
+                        {
+                            <option value="@per.Cedula" selected>@per.Nombre</option>
+                        }
+                    }
+
+                </select>
+                <span asp-validation-for="IdPersona"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IdMascota"> Mascotas</label>
+            <div>
+                <select asp-for="IdMascota" class="form-control">
+                    @foreach (var Mascota in Model.Mascotas)
+                    {
+
+                        if (Model.IdPersona != Mascota.Id.ToString())
+                        {
+                            <option value="@Mascota.Id">@Mascota.Nombre</option>
+                        }
+                        else
+                        {
+                            <option value="@Mascota.Id" selected>@Mascota.Nombre</option>
+                        }
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Editar" class="btn btn-primary btn-md btn-submit" />
         </div>
     </form>
 
+    @if (!String.IsNullOrEmpty(@Html.ValidationMessageFor(model => model.IdMascota).ToString()))
+    {
     <div class="alert alert-danger" role="alert">
         @Html.ValidationSummary(true)
         @Html.ValidationMessageFor(model => model.IdMascota)
     </div>
+    }
 </body>
 </html>
